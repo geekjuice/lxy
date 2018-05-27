@@ -1,0 +1,42 @@
+{
+  "name": "@geekjuice/lxy",
+  "version": "0.0.0",
+  "description": "learn x in y minutes",
+  "repository": "geekjuice/lxy",
+  "author": {
+    "name": "nicholas hwang",
+    "email": "hello@undefined.engineer",
+    "url": "https://undefined.engineer"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "bin": {
+    "lxy": "./index.js"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "chalk": "2.4.2",
+    "cheerio": "1.0.0-rc.3",
+    "debug": "4.1.1",
+    "got": "9.6.0",
+    "meow": "5.0.0",
+    "ora": "3.4.0",
+    "prompts": "2.2.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "10.0.3",
+    "eslint": "6.2.2",
+    "eslint-config-prettier": "6.1.0",
+    "husky": "3.0.4",
+    "jest": "24.9.0",
+    "lint-staged": "9.2.4",
+    "prettier": "1.18.2"
+  },
+  "scripts": {
+    "eslint": "eslint",
+    "jest": "jest",
+    "prettier": "prettier"
+  }
+}

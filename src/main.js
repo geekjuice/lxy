@@ -16,6 +16,10 @@ module.exports = async (thing, { things }) => {
     ? { href: normalized[thing] }
     : await prompt(normalized);
 
+  if (href == null) {
+    process.exit(1);
+  }
+
   const output = await learn(href);
 
   console.log(output);

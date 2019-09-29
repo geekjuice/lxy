@@ -1,32 +1,34 @@
 const got = require('got');
 const { load } = require('cheerio');
+const { cached } = require('@geekjuice/cash');
 const { URL, TYPES } = require('./constants');
 
-module.exports = async () => {
-  const { body: home } = await got(URL);
+module.exports = async () =>
+  cached(`lxy:listing`, async () => {
+    const { body: home } = await got(URL);
 
-  const $home = load(home);
+    const $home = load(home);
 
-  return Array.from(
-    $home('table').map((_, table) => {
-      const $table = $home(table);
-      const type = $table.find('h2').text();
+    return Array.from(
+      $home('table').map((_, table) => {
+        const $table = $home(table);
+        const type = $table.find('h2').text();
 
-      if (!TYPES.test(type)) {
-        return null;
-      }
+        if (!TYPES.test(type)) {
+          return null;
+        }
 
-      const rows = Array.from(
-        $table.find('tr > td.name > a').map((_, a) => {
-          const $anchor = $home(a);
-          return {
-            name: $anchor.text().trim(),
-            href: $anchor.attr('href'),
-          };
-        })
-      );
+        const rows = Array.from(
+          $table.find('tr > td.name > a').map((_, a) => {
+            const $anchor = $home(a);
+            return {
+              name: $anchor.text().trim(),
+              href: $anchor.attr('href'),
+            };
+          })
+        );
 
-      return { type, rows };
-    })
-  );
-};
+        return { type, rows };
+      })
+    );
+  });

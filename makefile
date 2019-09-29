@@ -14,7 +14,9 @@ DONE = echo [lxy] ✓ $@ done
 	format \
 	test \
 	debug \
-	start
+	start \
+	next \
+	latest
 
 default:
 	echo "Please enter a command..."
@@ -52,4 +54,12 @@ test:
 
 start:
 	node $(INDEX)
+	$(DONE)
+
+next:
+	npm publish --tag=next
+	$(DONE)
+
+latest:
+	npm publish --tag=latest
 	$(DONE)

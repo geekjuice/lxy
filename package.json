@@ -13,9 +13,19 @@
     "node": ">=8.0.0"
   },
   "bin": {
-    "lxy": "./index.js"
+    "lxy": "index.js"
   },
-  "main": "index.js",
+  "files": [
+    "src/**/*.js"
+  ],
+  "keywords": [
+    "geekjuice",
+    "cli",
+    "documentation",
+    "learn",
+    "lxy",
+    "minutes"
+  ],
   "dependencies": {
     "@geekjuice/cash": "0.0.1",
     "chalk": "2.4.2",
